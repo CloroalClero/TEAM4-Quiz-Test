@@ -97,3 +97,54 @@
         incorrect_answers: ["Python", "C", "Jakarta"],
       },
     ];
+
+let punteggio = 0
+let numeroDomanda = 0
+
+const contenitoreDomanda = document.getElementById("contenitore-domanda")
+const contenitoreRisposte = document.getElementById("contenitore-risposte")
+
+function mostraDomanda() {
+    if (numeroDomanda >= questions.length) {
+        return
+    }
+
+    const domandaCorrente = questions[numeroDomanda]
+
+    if (contenitoreDomanda) {
+        contenitoreDomanda.textContent = domandaCorrente.question
+    }
+
+    const tutteLeRisposte = []
+
+    tutteLeRisposte.push(domandaCorrente.correct_answer)
+
+    domandaCorrente.incorrect_answers.forEach((risposta) => {
+    tutteLeRisposte.push(risposta)
+    })
+
+    if (contenitoreRisposte) {
+        contenitoreRisposte.innerHTML = ""
+    }
+
+    tutteLeRisposte.forEach((risposta) => {
+    const bottoneRisposta = document.createElement("button")
+    bottoneRisposta.type = "button"
+    bottoneRisposta.textContent = risposta
+
+    bottoneRisposta.addEventListener("click", () => {
+        if (risposta === domandaCorrente.correct_answer) {
+        punteggio = punteggio + 1
+    }
+
+    numeroDomanda = numeroDomanda + 1
+    mostraDomanda()
+    })
+
+    if (contenitoreRisposte) {
+        contenitoreRisposte.appendChild(bottoneRisposta)
+        }
+    })
+}
+
+mostraDomanda()
