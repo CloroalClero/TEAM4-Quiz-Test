@@ -105,9 +105,10 @@ const contenitoreDomanda = document.getElementById("contenitore-domanda")
 const contenitoreRisposte = document.getElementById("contenitore-risposte")
 
 function mostraDomanda() {
-    if (numeroDomanda >= questions.length) {
-        return
-    }
+  if (numeroDomanda >= questions.length) {
+    console.log(punteggio)
+    return
+  }
 
     const domandaCorrente = questions[numeroDomanda]
 
@@ -121,6 +122,41 @@ function mostraDomanda() {
 
     domandaCorrente.incorrect_answers.forEach((risposta) => {
     tutteLeRisposte.push(risposta)
+  })
+
+  if (contenitoreRisposte) {
+    contenitoreRisposte.innerHTML = ""
+  }
+
+  tutteLeRisposte.forEach((risposta) => {
+    const containerRisposta = document.createElement("div")
+    containerRisposta.classList.add("answer")
+
+    const answerRadio = document.createElement("input")
+    answerRadio.type = "radio"
+    answerRadio.name = "answer"
+    answerRadio.value = risposta
+
+    const answerBox = document.createElement("span")
+    answerBox.classList.add("answerBox")
+
+    const answerText = document.createElement("span")
+    answerText.classList.add("text")
+    answerText.textContent = risposta
+
+    answerBox.appendChild(answerText)
+
+    containerRisposta.appendChild(answerRadio)
+    containerRisposta.appendChild(answerBox)
+
+    answerRadio.addEventListener("click", () => {
+      console.log(this)
+      if (this.value === domandaCorrente.correct_answer) {
+        punteggio++
+      }
+
+      numeroDomanda = numeroDomanda + 1
+      mostraDomanda()
     })
 
     if (contenitoreRisposte) {
