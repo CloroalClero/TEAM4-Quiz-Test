@@ -10,14 +10,14 @@
 <body>
 
     <header>
-        <img src="assets/epicode_logo.png" alt="EPICODE Logo" class="logo">
+        <img src="epicode_logo.png" alt="EPICODE Logo" class="logo">
     </header>
 
     <main>
         <section class="welcome-section">
             <h1 class="main-title">
-                Welcome to <br>
-                your exam
+                <span>Welcome to</span> 
+                <span>your exam</span>
             </h1>
 
             <div class="instructions">
@@ -29,76 +29,46 @@
 
                 <ul>
                     <li>Each question is <strong>timed</strong> and can only be <strong>answered once</strong>.</li>
-                    <li>Changing browser tab or opening other windows will <strong>invalidate the question</strong>.
-                    </li>
+                    <li>Changing browser tab or opening other windows will <strong>invalidate the question</strong>.</li>
                     <li>This exam will take approx. <strong>0-5 minutes</strong>.</li>
                 </ul>
             </div>
 
-            <div class="proceed-form">
-                <div>
+            <form class="proceed-form">
+                <p>
                     <input type="checkbox" id="check">
-                    <p>I promise to answer myself without help from anyone</p>
-                </div>
-
+                    I promise to answer myself without help from anyone
+                
                 <button type="submit" class="btn-proceed">PROCEED</button>
-
-            </div>
+                </p>
+            </form>
         </section>
 
         <section class="quiz-container">
-
+            
             <div class="timer-wrapper">
                 <div class="timer-circle">
+                    <span class="timer-label">SECONDS</span>
+                    <span class="timer-value">16</span>
+                    <span class="timer-label">REMAINING</span>
                 </div>
             </div>
 
-            <div id="container">
-                <div id="questions">
-                    <p><span>Domanda riga 1</span><span>Domanda riga 2</span></p>
-                </div>
-                <div id="answers">
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
+            <h2 class="question-text">How can I create a checkbox in HTML?</h2>
 
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
-
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
-
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
-                </div>
+            <div class="answers-grid">
+                <button class="answer-option">&lt;input type = "check"&gt;</button>
+                <button class="answer-option selected">&lt;input type = "checkbox"&gt;</button>
+                <button class="answer-option">&lt;checkbox&gt;</button>
+                <button class="answer-option">&lt;input type = "button"&gt;</button>
             </div>
-            <div id="contatore">
-                <p class="question-counter">NUMERO DOMANDA <span class="total-questions"> x </span></p>
-            </div>
+
+            <footer class="quiz-footer">
+                <p class="question-counter">QUESTION 1 <span class="total-questions">/ 10</span></p>
+            </footer>
+            
         </section>
     </main>
-    <footer>
 
-    </footer>
 </body>
-
 </html>
