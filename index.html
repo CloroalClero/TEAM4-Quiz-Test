@@ -1,104 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Epicode Welcome</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="css/welcome.css" />
+  </head>
 
-<body>
-
+  <body>
     <header>
-        <img src="assets/epicode_logo.png" alt="EPICODE Logo" class="logo">
+      <img src="assets/epicode_logo.png" alt="EPICODE Logo" class="logo" />
     </header>
 
     <main>
-        <section class="welcome-section">
-            <h1 class="main-title">
-                Welcome to <br>
-                your exam
-            </h1>
+      <section class="welcome-section">
+        <h1 class="main-title">
+          <span>Welcome to</span>
+          <span>your exam</span>
+        </h1>
 
-            <div class="instructions">
-                <h3>Instructions</h3>
-                <p>
-                    We don't expect most engineers to know the answers to all of these questions,
-                    so don't worry if you're unsure of a few of them.
-                </p>
+        <div class="instructions">
+          <h3>Instructions</h3>
+          <p>
+            We don't expect most engineers to know the answers to all of these
+            questions, so don't worry if you're unsure of a few of them.
+          </p>
 
-                <ul>
-                    <li>Each question is <strong>timed</strong> and can only be <strong>answered once</strong>.</li>
-                    <li>Changing browser tab or opening other windows will <strong>invalidate the question</strong>.
-                    </li>
-                    <li>This exam will take approx. <strong>0-5 minutes</strong>.</li>
-                </ul>
+          <ul>
+            <li>
+              Each question is <strong>timed</strong> and can only be
+              <strong>answered once</strong>.
+            </li>
+            <li>
+              Changing browser tab or opening other windows will
+              <strong>invalidate the question</strong>.
+            </li>
+            <li>This exam will take approx. <strong>0-5 minutes</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="proceed-form">
+          <div>
+            <input type="checkbox" id="check" />
+            <p>I promise to answer myself without help from anyone</p>
+          </div>
+
+          <button type="submit" class="btn-proceed">PROCEED</button>
+        </div>
+      </section>
+
+      <section class="quiz-container">
+        <div class="timer-wrapper">
+          <div class="timer-circle"></div>
+        </div>
+
+        <div id="container">
+          <div id="questions">
+            <p><span>Domanda riga 1</span><span>Domanda riga 2</span></p>
+          </div>
+          <div id="answers">
+            <div class="answer">
+              <input type="radio" name="q1" value="a" />
+              <span class="answerBox">
+                <span class="dot"></span>
+                <span class="text">Risposta A</span>
+              </span>
             </div>
 
-            <div class="proceed-form">
-                <div>
-                    <input type="checkbox" id="check">
-                    <p>I promise to answer myself without help from anyone</p>
-                </div>
-
-                <button type="submit" class="btn-proceed">PROCEED</button>
-
-            </div>
-        </section>
-
-        <section class="quiz-container">
-
-            <div class="timer-wrapper">
-                <div class="timer-circle">
-                </div>
+            <div class="answer">
+              <input type="radio" name="q1" value="a" />
+              <span class="answerBox">
+                <span class="dot"></span>
+                <span class="text">Risposta A</span>
+              </span>
             </div>
 
-            <div id="container">
-                <div id="questions">
-                    <p><span>Domanda riga 1</span><span>Domanda riga 2</span></p>
-                </div>
-                <div id="answers">
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
-
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
-
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
-
-                    <div class="answer">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answerBox">
-                            <span class="dot"></span>
-                            <span class="text">Risposta A</span>
-                        </span>
-                    </div>
-                </div>
+            <div class="answer">
+              <input type="radio" name="q1" value="a" />
+              <span class="answerBox">
+                <span class="dot"></span>
+                <span class="text">Risposta A</span>
+              </span>
             </div>
-            <div id="contatore">
-                <p class="question-counter">NUMERO DOMANDA <span class="total-questions"> x </span></p>
+
+            <div class="answer">
+              <input type="radio" name="q1" value="a" />
+              <span class="answerBox">
+                <span class="dot"></span>
+                <span class="text">Risposta A</span>
+              </span>
             </div>
-        </section>
+          </div>
+        </div>
+        <div id="contatore">
+          <p class="question-counter">
+            NUMERO DOMANDA <span class="total-questions"> x </span>
+          </p>
+        </div>
+      </section>
     </main>
-    <footer>
+    <footer></footer>
 
-    </footer>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>

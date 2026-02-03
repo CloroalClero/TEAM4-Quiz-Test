@@ -102,6 +102,7 @@ const contenitoreRisposte = document.getElementById("answers")
 
 function mostraDomanda() {
   if (numeroDomanda >= questions.length) {
+    console.log(punteggio)
     return
   }
 
@@ -145,8 +146,9 @@ function mostraDomanda() {
     containerRisposta.appendChild(answerBox)
 
     answerRadio.addEventListener("click", () => {
+      console.log(this)
       if (this.value === domandaCorrente.correct_answer) {
-        punteggio = punteggio + 1
+        punteggio++
       }
 
       numeroDomanda = numeroDomanda + 1
