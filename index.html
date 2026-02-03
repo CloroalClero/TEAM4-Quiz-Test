@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Epicode Welcome</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <img src="epicode_logo.png" alt="EPICODE Logo" class="logo">
+    </header>
+
+    <main>
+        <section class="welcome-section">
+            <h1 class="main-title">
+                Welcome to <br>
+                your exam
+            </h1>
+
+            <div class="instructions">
+                <h3>Instructions</h3>
+                <p>
+                    We don't expect most engineers to know the answers to all of these questions,
+                    so don't worry if you're unsure of a few of them.
+                </p>
+
+                <ul>
+                    <li>Each question is <strong>timed</strong> and can only be <strong>answered once</strong>.</li>
+                    <li>Changing browser tab or opening other windows will <strong>invalidate the question</strong>.</li>
+                    <li>This exam will take approx. <strong>0-5 minutes</strong>.</li>
+                </ul>
+            </div>
+
+            <form class="proceed-form">
+                <p>
+                    <input type="checkbox" id="check">
+                    I promise to answer myself without help from anyone
+                
+                <button type="submit" class="btn-proceed">PROCEED</button>
+                </p>
+            </form>
+        </section>
+
+        <section class="quiz-container">
+            
+            <div class="timer-wrapper">
+                <div class="timer-circle">
+                    <span class="timer-label">SECONDS</span>
+                    <span class="timer-value">16</span>
+                    <span class="timer-label">REMAINING</span>
+                </div>
+            </div>
+
+            <h2 class="question-text">How can I create a checkbox in HTML?</h2>
+
+            <div class="answers-grid">
+                <button class="answer-option">&lt;input type = "check"&gt;</button>
+                <button class="answer-option selected">&lt;input type = "checkbox"&gt;</button>
+                <button class="answer-option">&lt;checkbox&gt;</button>
+                <button class="answer-option">&lt;input type = "button"&gt;</button>
+            </div>
+
+            <footer class="quiz-footer">
+                <p class="question-counter">QUESTION 1 <span class="total-questions">/ 10</span></p>
+            </footer>
+            
+        </section>
+    </main>
+
+</body>
+</html>
