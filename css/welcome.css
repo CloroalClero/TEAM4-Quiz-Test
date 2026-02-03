@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap');
+/*1. Leyout che non si rompe*/
+
+/*Reset minimo*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*grandezze inserite reali*/
+}
+
+/*Strutura pagina*/
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /*grande almeno quanto la finestra ma aumenta se serve*/
+    background-image: url(../assets/bg.jpg);
+    /*Da qui per coprire sempre tutta la larchezza del body*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Inter', sans-serif;
+}
+
+/*header*/
+header {
+    padding: 24px 60px;
+    /*evita contenuto schiacciato*/
+    border: 2px solid black;
+    background: transparent;
+}
+
+header img {
+    /*logo*/
+    height: 40px;
+    width: auto;
+    margin: 0;
+}
+
+/*Main*/
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /*da proporzione al main rispetto agli altri elementi
+    footer scende sempre sotto
+    no sovraposizioni
+    no contenuto che esce dal main */
+    background: transparent;
+    border: 2px solid rgb(197, 21, 21);
+    padding: 40px 60px;
+}
+
+h1 {
+    border: 2px solid white;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+h1 span {
+    display: block;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 60px;
+    line-height: 0.95;
+}
+
+h1 span:first-child {
+    font-weight: normal;
+}
+
+h1 span:last-child {
+    font-weight: 700;
+}
+
+h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: normal;
+    color: #d20094;
+    margin-top: 20px;
+}
+
+.instructions p {
+    color: white;
+    font-size: 16px;
+}
+
+ul {
+    padding-left: 18px;
+    margin-top: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+li {
+    padding: 3px;
+}
+
+.proceed-form {
+    margin-top: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+.proceed-form div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.proceed-form input{
+  width: 18px;
+  height: 18px;
+}
+
+.proceed-form button {
+  border: none;
+  padding: 14px 46px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+   border-radius: 6px;
+  background: #00FFFF;
+  color: #0a0a23;
+  cursor: pointer;
+   transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.proceed-form button:disabled {
+  background-color: grey;
+  opacity: 0.35;          
+  box-shadow: none;      
+  cursor: not-allowed; /*cursore con divieto*/
+}
+.proceed-form button:enabled {
+  background-color: #00FFFF;
+  opacity: 1;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 18px rgba(0, 255, 255, 0.55),
+    0 0 40px rgba(0, 255, 255, 0.35);
+}
+.proceed-form button:enabled:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 24px rgba(0, 255, 255, 0.75),
+    0 0 55px rgba(0, 255, 255, 0.5);
+}
+
+/*Footer*/
+footer {
+    padding: 50px;
+    background: transparent;
+    border: 2px solid rgb(29, 21, 174);
+}
+
+/*
+*/

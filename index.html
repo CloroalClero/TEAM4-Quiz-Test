@@ -5,15 +5,12 @@
     <meta charset="UTF-8">
     <title>Epicode Welcome</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <header>
-        <img src="epicode_logo.png" alt="EPICODE Logo" class="logo">
+        <img src="assets/epicode_logo.png" alt="EPICODE Logo" class="logo">
     </header>
 
     <main>
@@ -39,9 +36,10 @@
             </div>
 
             <div class="proceed-form">
-
-                <input type="checkbox" id="check">
-                <p>I promise to answer myself without help from anyone</p>
+                <div>
+                    <input type="checkbox" id="check">
+                    <p>I promise to answer myself without help from anyone</p>
+                </div>
 
                 <button type="submit" class="btn-proceed">PROCEED</button>
 
@@ -59,7 +57,7 @@
                 <div id="questions">
                     <p><span>Domanda riga 1</span><span>Domanda riga 2</span></p>
                 </div>
-                <div class="answers">
+                <div id="answers">
                     <div class="answer">
                         <input type="radio" name="q1" value="a">
                         <span class="answerBox">
