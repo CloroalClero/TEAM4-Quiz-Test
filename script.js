@@ -97,8 +97,8 @@ const questions = [
 let punteggio = 0
 let numeroDomanda = 0
 
-const contenitoreDomanda = document.getElementById("contenitore-domanda")
-const contenitoreRisposte = document.getElementById("contenitore-risposte")
+const contenitoreDomanda = document.getElementById("questions")
+const contenitoreRisposte = document.getElementById("answers")
 
 function mostraDomanda() {
   if (numeroDomanda >= questions.length) {
@@ -120,9 +120,7 @@ function mostraDomanda() {
     tutteLeRisposte.push(risposta)
   })
 
-  if (contenitoreRisposte) {
-    contenitoreRisposte.innerHTML = ""
-  }
+  contenitoreRisposte.innerHTML = ""
 
   tutteLeRisposte.forEach((risposta) => {
     const containerRisposta = document.createElement("div")
@@ -146,8 +144,7 @@ function mostraDomanda() {
     containerRisposta.appendChild(answerBox)
 
     answerRadio.addEventListener("click", () => {
-      console.log(this)
-      if (this.value === domandaCorrente.correct_answer) {
+      if (risposta === domandaCorrente.correct_answer) {
         punteggio++
       }
 
@@ -155,28 +152,7 @@ function mostraDomanda() {
       mostraDomanda()
     })
 
-    if (contenitoreRisposte) {
-      contenitoreRisposte.innerHTML = ""
-    }
-
-    tutteLeRisposte.forEach((risposta) => {
-      const bottoneRisposta = document.createElement("button")
-      bottoneRisposta.type = "button"
-      bottoneRisposta.textContent = risposta
-
-      bottoneRisposta.addEventListener("click", () => {
-        if (risposta === domandaCorrente.correct_answer) {
-          punteggio = punteggio + 1
-        }
-
-        numeroDomanda = numeroDomanda + 1
-        mostraDomanda()
-      })
-
-      if (contenitoreRisposte) {
-        contenitoreRisposte.appendChild(bottoneRisposta)
-      }
-    })
+    contenitoreRisposte.appendChild(containerRisposta)
   })
 }
 
