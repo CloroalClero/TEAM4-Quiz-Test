@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    display:flex;
+    min-height: 100vh;
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    padding: 24px 60px;
+    border: 2px solid black;
+    background: transparent;
+}
+header img {
+    /*logo*/
+    height: 40px;
+    width: auto;
+    margin: 0;
+}
+main{
+    flex: 1;
+    padding: 24px;
+    border: 2px solid blue;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+#questions span {
+    display: block;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 35px;
+    line-height: 0.95;
+}
+
+#questions span:first-child {
+    font-weight: normal;
+}
+
+#questions span:last-child {
+    font-weight: 700;
+}
+.answers {
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.answer {
+    cursor: pointer;
+}
+
+/*nascondere il radio nativo*/
+.answer input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    /*evita che il pallino intercetti i click*/
+}
+
+/*BASE-integrato nello sfondo*/
+.answerBox {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 14px 18px;
+    border-radius: 12px;
+
+    background: trasparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.text{
+    color: white;
+     font-family: 'Inter', sans-serif;
+     font-size: 16px;
+     font-weight: 400;
+}
+
+/*Hover leggero sul body*/
+.answers:hover .answerBox{
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+/*Selezionato -> cambio sfondo*/
+.answer input:checked + .answerBox{
+ background: linear-gradient(90deg, #D20094, #900080);
+  border-color: transparent;
+}
+#contatore {
+    margin: 0 auto;
+    color: white;
+    padding-top: 20px;
+}
+#contatore span{
+    color:#900080 ;
+}
+footer{
+    padding: 16px;
+    border: 2px solid black;
+    background: transparent;
+}
