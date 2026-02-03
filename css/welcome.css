@@ -162,12 +162,11 @@ li {
     0 0 55px rgba(0, 255, 255, 0.5);
 }
 
-/*Footer*/
-footer {
-    padding: 50px;
-    background: transparent;
-    border: 2px solid rgb(29, 21, 174);
-}
 
-/*
-*/
+
+/*Footer*/
+footer{
+    padding: 16px;
+    border: 2px solid black;
+    background: transparent;
+}
