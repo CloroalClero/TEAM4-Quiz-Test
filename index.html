@@ -32,46 +32,73 @@
 
                 <ul>
                     <li>Each question is <strong>timed</strong> and can only be <strong>answered once</strong>.</li>
-                    <li>Changing browser tab or opening other windows will <strong>invalidate the question</strong>.</li>
+                    <li>Changing browser tab or opening other windows will <strong>invalidate the question</strong>.
+                    </li>
                     <li>This exam will take approx. <strong>0-5 minutes</strong>.</li>
                 </ul>
             </div>
 
-            <form class="proceed-form">
-                <p>
-                    <input type="checkbox" id="check">
-                    I promise to answer myself without help from anyone
-                
+            <div class="proceed-form">
+
+                <input type="checkbox" id="check">
+                <p>I promise to answer myself without help from anyone</p>
+
                 <button type="submit" class="btn-proceed">PROCEED</button>
-                </p>
-            </form>
+
+            </div>
         </section>
 
         <section class="quiz-container">
-            
+
             <div class="timer-wrapper">
                 <div class="timer-circle">
-                    <span class="timer-label">SECONDS</span>
-                    <span class="timer-value">16</span>
-                    <span class="timer-label">REMAINING</span>
                 </div>
             </div>
 
-            <h2 class="question-text">How can I create a checkbox in HTML?</h2>
+            <div id="container">
+                <div id="questions">
+                    <p><span>Domanda riga 1</span><span>Domanda riga 2</span></p>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <input type="radio" name="q1" value="a">
+                        <span class="answerBox">
+                            <span class="dot"></span>
+                            <span class="text">Risposta A</span>
+                        </span>
+                    </div>
 
-            <div class="answers-grid">
-                <button class="answer-option">&lt;input type = "check"&gt;</button>
-                <button class="answer-option selected">&lt;input type = "checkbox"&gt;</button>
-                <button class="answer-option">&lt;checkbox&gt;</button>
-                <button class="answer-option">&lt;input type = "button"&gt;</button>
+                    <div class="answer">
+                        <input type="radio" name="q1" value="a">
+                        <span class="answerBox">
+                            <span class="dot"></span>
+                            <span class="text">Risposta A</span>
+                        </span>
+                    </div>
+
+                    <div class="answer">
+                        <input type="radio" name="q1" value="a">
+                        <span class="answerBox">
+                            <span class="dot"></span>
+                            <span class="text">Risposta A</span>
+                        </span>
+                    </div>
+
+                    <div class="answer">
+                        <input type="radio" name="q1" value="a">
+                        <span class="answerBox">
+                            <span class="dot"></span>
+                            <span class="text">Risposta A</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-
-            <footer class="quiz-footer">
-                <p class="question-counter">QUESTION 1 <span class="total-questions">/ 10</span></p>
-            </footer>
-            
-        </section>
+            <div id="contatore">
+                <p class="question-counter">NUMERO DOMANDA <span class="total-questions"> x </span></p>
+            </div>
+         </section>
     </main>
 
 </body>
+
 </html>
