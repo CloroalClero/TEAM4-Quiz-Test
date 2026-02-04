@@ -94,66 +94,199 @@ const questions = [
   },
 ]
 
-let punteggio = 0
-let numeroDomanda = 0
+let score = 0
+let currentQuestionId = 0
+let timer = null
+const duration = 5
+let remaining = duration
 
-const contenitoreDomanda = document.getElementById("questions")
-const contenitoreRisposte = document.getElementById("answers")
+window.addEventListener("load", () => {
+  const checkbox = document.getElementById("check")
+  const proceedButton = document.getElementsByClassName("btn-proceed")[0]
 
-function mostraDomanda() {
-  if (numeroDomanda >= questions.length) {
-    console.log(punteggio)
-    return
+  proceedButton.addEventListener("click", () => {
+    if (checkbox.checked) {
+      startQuiz()
+    }
+  })
+})
+
+// function mostraDomanda() {
+//   if (numeroDomanda >= questions.length) {
+//     console.log(punteggio)
+//     return
+//   }
+
+//   const domandaCorrente = questions[numeroDomanda]
+
+//   if (contenitoreDomanda) {
+//     contenitoreDomanda.innerHTML = `<span>${domandaCorrente.question}</span>`
+//   }
+
+//   const tutteLeRisposte = []
+
+//   tutteLeRisposte.push(domandaCorrente.correct_answer)
+
+//   domandaCorrente.incorrect_answers.forEach((risposta) => {
+//     tutteLeRisposte.push(risposta)
+//   })
+
+//   contenitoreRisposte.innerHTML = ""
+
+//   tutteLeRisposte.forEach((risposta) => {
+//     const containerRisposta = document.createElement("div")
+//     containerRisposta.classList.add("answer")
+
+//     const answerRadio = document.createElement("input")
+//     answerRadio.type = "radio"
+//     answerRadio.name = "answer"
+//     answerRadio.value = risposta
+
+//     const answerBox = document.createElement("span")
+//     answerBox.classList.add("answerBox")
+
+//     const answerText = document.createElement("span")
+//     answerText.classList.add("text")
+//     answerText.textContent = risposta
+
+//     answerBox.appendChild(answerText)
+
+//     containerRisposta.appendChild(answerRadio)
+//     containerRisposta.appendChild(answerBox)
+
+//     answerRadio.addEventListener("click", () => {
+//       if (risposta === domandaCorrente.correct_answer) {
+//         punteggio++
+//       }
+
+//       numeroDomanda = numeroDomanda + 1
+//       mostraDomanda()
+//     })
+
+//     contenitoreRisposte.appendChild(containerRisposta)
+//   })
+// }
+
+function startQuiz() {
+  document.body.classList.add("quiz-active")
+  score = 0
+  currentQuestionId = 0
+  showQuestion()
+}
+
+function showQuestion() {
+  const questionContainer = document.getElementById("questions")
+  const answersContainer = document.getElementById("answers")
+  const currentQuestion = questions[currentQuestionId]
+  const allAnswers = []
+
+  clearInterval(timer)
+  remaining = duration
+
+  questionContainer.innerHTML = `<span>${currentQuestion.question}</span>`
+
+  answersContainer.innerHTML = ""
+
+  allAnswers.push(currentQuestion.correct_answer)
+
+  for (let answer of currentQuestion.incorrect_answers) {
+    allAnswers.push(answer)
   }
 
-  const domandaCorrente = questions[numeroDomanda]
-
-  if (contenitoreDomanda) {
-    contenitoreDomanda.textContent = domandaCorrente.question
+  while (allAnswers.length > 0) {
+    printAnwer(
+      allAnswers.splice(Math.floor(Math.random() * allAnswers.length), 1),
+      answersContainer,
+    )
   }
 
-  const tutteLeRisposte = []
+  startTimer()
+}
 
-  tutteLeRisposte.push(domandaCorrente.correct_answer)
+function startTimer() {
+  const timerContainer = document.getElementsByClassName("timer-circle")[0]
 
-  domandaCorrente.incorrect_answers.forEach((risposta) => {
-    tutteLeRisposte.push(risposta)
+  timerContainer.innerHTML = ""
+
+  const displayTimer = new ProgressBar.Circle(timerContainer, {
+    strokeWidth: 12,
+    trailWidth: 12,
+    color: "#07bcc8",
+    trailColor: "rgba(255,255,255,0.3)",
+    duration: 1000,
+    easing: "linear",
+    svgStyle: {
+      transform: "scale(-1, 1)",
+      transformOrigin: "50% 50%",
+    },
+    text: {
+      autoStyleContainer: false,
+    },
+    from: { color: "#07bcc8" },
+    to: { color: "#07bcc8" },
+    step: function (state, circle) {
+      circle.setText(`${remaining}`)
+    },
   })
 
-  contenitoreRisposte.innerHTML = ""
+  displayTimer.set(1)
 
-  tutteLeRisposte.forEach((risposta) => {
-    const containerRisposta = document.createElement("div")
-    containerRisposta.classList.add("answer")
+  timer = setInterval(() => {
+    remaining--
+    displayTimer.animate(remaining / duration)
 
-    const answerRadio = document.createElement("input")
-    answerRadio.type = "radio"
-    answerRadio.name = "answer"
-    answerRadio.value = risposta
+    if (remaining < 0) {
+      clearInterval(timer)
+      loadNextQuestion()
+    }
+  }, 1000)
+}
 
-    const answerBox = document.createElement("span")
-    answerBox.classList.add("answerBox")
+function printAnwer(answer, container) {
+  const answerContainer = document.createElement("div")
+  answerContainer.classList.add("answer")
 
-    const answerText = document.createElement("span")
-    answerText.classList.add("text")
-    answerText.textContent = risposta
+  const answerRadio = document.createElement("input")
+  answerRadio.type = "radio"
+  answerRadio.name = "answer"
+  answerRadio.value = answer
 
-    answerBox.appendChild(answerText)
+  const answerBox = document.createElement("span")
+  answerBox.classList.add("answerBox")
 
-    containerRisposta.appendChild(answerRadio)
-    containerRisposta.appendChild(answerBox)
+  const answerText = document.createElement("span")
+  answerText.classList.add("text")
+  answerText.textContent = answer
 
-    answerRadio.addEventListener("click", () => {
-      if (risposta === domandaCorrente.correct_answer) {
-        punteggio++
-      }
+  answerBox.appendChild(answerText)
+  answerContainer.appendChild(answerRadio)
+  answerContainer.appendChild(answerBox)
+  container.appendChild(answerContainer)
 
-      numeroDomanda = numeroDomanda + 1
-      mostraDomanda()
-    })
-
-    contenitoreRisposte.appendChild(containerRisposta)
+  answerRadio.addEventListener("click", () => {
+    checkUserSelection(answer)
   })
 }
 
-mostraDomanda()
+function checkUserSelection(userAnswer) {
+  clearInterval(timer)
+  const currentQuestion = questions[currentQuestionId]
+  if (userAnswer === currentQuestion.correct_answer) {
+    score++
+  }
+  loadNextQuestion()
+}
+
+function loadNextQuestion() {
+  currentQuestionId++
+
+  if (currentQuestionId >= questions.length) {
+    showResult()
+  } else {
+    showQuestion()
+  }
+}
+
+function showResult() {
+  console.log(score)
+}
