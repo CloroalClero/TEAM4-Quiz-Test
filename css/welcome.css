@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap');
-/*1. Leyout che non si rompe*/
 
-/*Reset minimo*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /*grandezze inserite reali*/
 }
 
-/*Strutura pagina*/
 html,
 body {
     height: 100%;
@@ -19,53 +15,40 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /*grande almeno quanto la finestra ma aumenta se serve*/
     background-image: url(../assets/bg.jpg);
-    /*Da qui per coprire sempre tutta la larchezza del body*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     font-family: 'Inter', sans-serif;
 }
 
-/*header*/
 header {
     padding: 24px 60px;
-    /*evita contenuto schiacciato*/
-    border: 2px solid black;
     background: transparent;
 }
 
-header img {
-    /*logo*/
+header img.logo {
     height: 40px;
     width: auto;
     margin: 0;
 }
 
-/*Main*/
 main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    /*da proporzione al main rispetto agli altri elementi
-    footer scende sempre sotto
-    no sovraposizioni
-    no contenuto che esce dal main */
     background: transparent;
-    border: 2px solid rgb(197, 21, 21);
     padding: 40px 60px;
 }
 
-h1 {
-    border: 2px solid white;
+.main-title {
     height: auto;
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
-h1 span {
+.main-title span {
     display: block;
     color: white;
     font-family: 'Outfit', sans-serif;
@@ -73,11 +56,11 @@ h1 span {
     line-height: 0.95;
 }
 
-h1 span:first-child {
-    font-weight: normal;
+.main-title span:first-child {
+    font-weight: 400;
 }
 
-h1 span:last-child {
+.main-title span:last-child {
     font-weight: 700;
 }
 
@@ -122,51 +105,208 @@ li {
     font-size: 14px;
     cursor: pointer;
 }
-.proceed-form input{
-  width: 18px;
-  height: 18px;
+
+.proceed-form input {
+    width: 18px;
+    height: 18px;
 }
 
 .proceed-form button {
-  border: none;
-  padding: 14px 46px;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-   border-radius: 6px;
-  background: #00FFFF;
-  color: #0a0a23;
-  cursor: pointer;
-   transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    border: none;
+    padding: 14px 46px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    background: #00FFFF;
+    color: #0a0a23;
+    cursor: pointer;
+    transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
+
 .proceed-form button:disabled {
-  background-color: grey;
-  opacity: 0.35;          
-  box-shadow: none;      
-  cursor: not-allowed; /*cursore con divieto*/
+    background-color: grey;
+    opacity: 0.35;
+    box-shadow: none;
+    cursor: not-allowed;
 }
+
 .proceed-form button:enabled {
-  background-color: #00FFFF;
-  opacity: 1;
-  cursor: pointer;
+    background-color: #00FFFF;
+    opacity: 1;
+    cursor: pointer;
 
-  box-shadow:
-    0 0 18px rgba(0, 255, 255, 0.55),
-    0 0 40px rgba(0, 255, 255, 0.35);
+    box-shadow:
+        0 0 18px rgba(0, 255, 255, 0.55),
+        0 0 40px rgba(0, 255, 255, 0.35);
 }
+
 .proceed-form button:enabled:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 24px rgba(0, 255, 255, 0.75),
-    0 0 55px rgba(0, 255, 255, 0.5);
+    transform: translateY(-1px);
+    box-shadow:
+        0 0 24px rgba(0, 255, 255, 0.75),
+        0 0 55px rgba(0, 255, 255, 0.5);
+}
+
+.quiz-container .timer-wrapper {
+    position: absolute;
+    right: 60px;
+    top: -100px;
+
+    z-index: 10;
+
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-container .timer-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 10px solid rgba(0, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+body.quiz-active header {
+    display: block;
 }
 
 
+.quiz-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 140px;
+    justify-content: space-between;
+}
 
-/*Footer*/
-footer{
+#questions {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#questions span {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 54px;
+    line-height: 1.05;
+    color: white;
+}
+
+#questions span:first-child {
+    font-weight: 400;
+}
+
+#questions span:last-child {
+    font-weight: 700;
+}
+
+#answers {
+    width: 100%;
+    max-width: 900px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 40px;
+}
+
+.answer {
+    cursor: pointer;
+}
+
+#contatore {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.question-counter {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: white;
+}
+
+.total-questions {
+    color: #d20094;
+}
+
+.answer {
+    position: relative;
+}
+
+.answer input[type="radio"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0;
+    z-index: 2;
+}
+
+.answerBox {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 26px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.answerBox .text {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.answer:hover .answerBox {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+.answer input:checked+.answerBox {
+    background: linear-gradient(90deg, #D20094, #900080);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.answerBox .dot {
+    display: none;
+}
+
+/*test per il gradiente
+.answer:active .answerBox {
+  background: linear-gradient(90deg, #D20094, #900080);
+  border-color: rgba(255,255,255,0.25);
+}*/
+
+/*quando il quiz non è attivo non si vede*/
+.quiz-container {
+    display: none;
+}
+
+/*quando il quiz è attivo sparisce la home*/
+body.quiz-active .welcome-section {
+    display: none;
+}
+
+/*quando il quiz è attivo compare*/
+body.quiz-active .quiz-container {
+    display: flex;
+}
+
+footer {
     padding: 16px;
-    border: 2px solid black;
     background: transparent;
 }
