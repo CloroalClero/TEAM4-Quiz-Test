@@ -97,7 +97,7 @@ const questions = [
 let score = 0
 let currentQuestionId = 0
 let timer = null
-const timerDuration = 60
+const timerDuration = 5
 let timerRemaining = timerDuration
 
 window.addEventListener("load", () => {
@@ -146,7 +146,7 @@ function showQuestion() {
 
   while (allAnswers.length > 0) {
     printAnwer(
-      allAnswers.splice(Math.floor(Math.random() * allAnswers.length), 1),
+      allAnswers.splice(Math.floor(Math.random() * allAnswers.length), 1)[0],
       answersContainer,
     )
   }
@@ -226,14 +226,12 @@ function printAnwer(answer, container) {
 }
 
 function checkUserSelection(userAnswer) {
-  if (currentQuestionId < questions.length) {
-    clearInterval(timer)
-    const currentQuestion = questions[currentQuestionId]
-    if (userAnswer === currentQuestion.correct_answer) {
-      score++
-    }
-    loadNextQuestion()
+  clearInterval(timer)
+  const currentQuestion = questions[currentQuestionId]
+  if (userAnswer === currentQuestion.correct_answer) {
+    score++
   }
+  loadNextQuestion()
 }
 
 function loadNextQuestion() {
@@ -248,4 +246,39 @@ function loadNextQuestion() {
 
 function showResult() {
   console.log(score)
+  document.body.classList.remove("quiz-active")
+  document.body.classList.add("result-active")
+  const resultContainer = document.getElementById("resultContainer")
+  const resultBar = new ProgressBar.SemiCircle(resultContainer, {
+    strokeWidth: 6,
+    color: "#07bcc8",
+    trailColor: "#eee",
+    trailWidth: 6,
+    easing: "easeOut",
+    duration: 1500,
+    text: {
+      value: "0%",
+      alignToBottom: false,
+    },
+    from: { color: "#07bcc8" },
+    to: { color: "#6ec807" },
+    step: (state, resultBar) => {
+      resultBar.path.setAttribute("stroke", state.color)
+      var value = Math.round(resultBar.value() * 100)
+      resultBar.setText(`${value}%`)
+      resultBar.text.style.color = state.color
+    },
+  })
+  resultBar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif'
+  resultBar.text.style.fontSize = "2rem"
+
+  resultBar.animate(score / questions.length)
+
+  confetti({
+    position: { x: window.innerWidth * 0.5, y: 0 },
+    count: 1000,
+    size: 1,
+    velocity: 300,
+    fade: true,
+  })
 }
