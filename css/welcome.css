@@ -94,7 +94,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 40px;
+    padding-top: 200px;
 }
 
 .proceed-form div {
@@ -167,7 +167,7 @@ li {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 10px solid rgba(0, 255, 255, 0.7);
+   /* border: 10px solid rgba(0, 255, 255, 0.7);*/
     background: rgba(255, 255, 255, 0.06);
 }
 
@@ -187,24 +187,33 @@ body.quiz-active header {
 
 #questions {
     text-align: center;
-    margin-top: 40px;
+    /*margin-top: 40px;*/
+    max-width: 680px;
+    margin: 0 auto;
+     display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 54px;
+    line-height: 1.05;
+    color: white;
+    font-weight: 400;
 }
 
-#questions span {
+/*#questions p {
     display: block;
     font-family: 'Outfit', sans-serif;
     font-size: 54px;
     line-height: 1.05;
     color: white;
+    font-weight: 400;
 }
 
-#questions span:first-child {
+/*#questions span:first-child {
     font-weight: 400;
 }
 
 #questions span:last-child {
     font-weight: 700;
-}
+}*/
 
 #answers {
     width: 100%;
@@ -274,6 +283,7 @@ body.quiz-active header {
 .answer:hover .answerBox {
     transform: translateY(-1px);
     border-color: rgba(255, 255, 255, 0.65);
+    background: linear-gradient(90deg, #D20094, #900080);
 }
 
 .answer input:checked+.answerBox {
