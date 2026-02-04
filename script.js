@@ -97,8 +97,8 @@ const questions = [
 let score = 0
 let currentQuestionId = 0
 let timer = null
-const duration = 5
-let remaining = duration
+const timerDuration = 60
+let timerRemaining = timerDuration
 
 window.addEventListener("load", () => {
   const checkbox = document.getElementById("check")
@@ -114,62 +114,6 @@ window.addEventListener("load", () => {
     }
   })
 })
-
-// function mostraDomanda() {
-//   if (numeroDomanda >= questions.length) {
-//     console.log(punteggio)
-//     return
-//   }
-
-//   const domandaCorrente = questions[numeroDomanda]
-
-//   if (contenitoreDomanda) {
-//     contenitoreDomanda.innerHTML = `<span>${domandaCorrente.question}</span>`
-//   }
-
-//   const tutteLeRisposte = []
-
-//   tutteLeRisposte.push(domandaCorrente.correct_answer)
-
-//   domandaCorrente.incorrect_answers.forEach((risposta) => {
-//     tutteLeRisposte.push(risposta)
-//   })
-
-//   contenitoreRisposte.innerHTML = ""
-
-//   tutteLeRisposte.forEach((risposta) => {
-//     const containerRisposta = document.createElement("div")
-//     containerRisposta.classList.add("answer")
-
-//     const answerRadio = document.createElement("input")
-//     answerRadio.type = "radio"
-//     answerRadio.name = "answer"
-//     answerRadio.value = risposta
-
-//     const answerBox = document.createElement("span")
-//     answerBox.classList.add("answerBox")
-
-//     const answerText = document.createElement("span")
-//     answerText.classList.add("text")
-//     answerText.textContent = risposta
-
-//     answerBox.appendChild(answerText)
-
-//     containerRisposta.appendChild(answerRadio)
-//     containerRisposta.appendChild(answerBox)
-
-//     answerRadio.addEventListener("click", () => {
-//       if (risposta === domandaCorrente.correct_answer) {
-//         punteggio++
-//       }
-
-//       numeroDomanda = numeroDomanda + 1
-//       mostraDomanda()
-//     })
-
-//     contenitoreRisposte.appendChild(containerRisposta)
-//   })
-// }
 
 function startQuiz() {
   document.body.classList.add("quiz-active")
@@ -188,7 +132,7 @@ function showQuestion() {
   document.getElementById("currentQuestion").textContent = currentQuestionId + 1
 
   clearInterval(timer)
-  remaining = duration
+  timerRemaining = timerDuration
 
   questionContainer.innerHTML = `${currentQuestion.question}`
 
@@ -216,15 +160,16 @@ function startTimer() {
   timerContainer.innerHTML = ""
 
   const displayTimer = new ProgressBar.Circle(timerContainer, {
-    strokeWidth: 12,
-    trailWidth: 12,
+    strokeWidth: 10,
+    trailWidth: 10,
     color: "#07bcc8",
-    trailColor: "rgba(255,255,255,0.3)",
+    trailColor: "rgba(255,255,255,0.1)",
     duration: 1000,
     easing: "linear",
     svgStyle: {
       transform: "scale(-1, 1)",
       transformOrigin: "50% 50%",
+      filter: "drop-shadow(0 0 10px rgba(0,0,0,0.5)",
     },
     text: {
       autoStyleContainer: false,
@@ -232,19 +177,23 @@ function startTimer() {
     from: { color: "#07bcc8" },
     to: { color: "#07bcc8" },
     step: function (state, circle) {
-      circle.setText(`${remaining}`)
+      circle.setText(`
+        <span class="timer-text">SECONDS</span>
+        <span class="timer-seconds">${timerRemaining}</span>
+        <span class="timer-text">REMAINING</span>
+        `)
     },
   })
 
   displayTimer.set(1)
 
   timer = setInterval(() => {
-    remaining--
-    displayTimer.animate(remaining / duration)
+    timerRemaining--
+    displayTimer.animate(timerRemaining / timerDuration)
 
-    if (remaining < 0) {
+    if (timerRemaining < 0) {
       clearInterval(timer)
-      remaining = 0
+      timerRemaining = 0
       loadNextQuestion()
     }
   }, 1000)
