@@ -104,6 +104,10 @@ window.addEventListener("load", () => {
   const checkbox = document.getElementById("check")
   const proceedButton = document.getElementsByClassName("btn-proceed")[0]
 
+  checkbox.addEventListener("change", () => {
+    proceedButton.disabled = !checkbox.checked
+  })
+
   proceedButton.addEventListener("click", () => {
     if (checkbox.checked) {
       startQuiz()
@@ -171,6 +175,7 @@ function startQuiz() {
   document.body.classList.add("quiz-active")
   score = 0
   currentQuestionId = 0
+  document.getElementById("totalQuestions").textContent = questions.length
   showQuestion()
 }
 
@@ -180,10 +185,12 @@ function showQuestion() {
   const currentQuestion = questions[currentQuestionId]
   const allAnswers = []
 
+  document.getElementById("currentQuestion").textContent = currentQuestionId + 1
+
   clearInterval(timer)
   remaining = duration
 
-  questionContainer.innerHTML = `<span>${currentQuestion.question}</span>`
+  questionContainer.innerHTML = `${currentQuestion.question}`
 
   answersContainer.innerHTML = ""
 
@@ -237,6 +244,7 @@ function startTimer() {
 
     if (remaining < 0) {
       clearInterval(timer)
+      remaining = 0
       loadNextQuestion()
     }
   }, 1000)
@@ -269,12 +277,14 @@ function printAnwer(answer, container) {
 }
 
 function checkUserSelection(userAnswer) {
-  clearInterval(timer)
-  const currentQuestion = questions[currentQuestionId]
-  if (userAnswer === currentQuestion.correct_answer) {
-    score++
+  if (currentQuestionId < questions.length) {
+    clearInterval(timer)
+    const currentQuestion = questions[currentQuestionId]
+    if (userAnswer === currentQuestion.correct_answer) {
+      score++
+    }
+    loadNextQuestion()
   }
-  loadNextQuestion()
 }
 
 function loadNextQuestion() {

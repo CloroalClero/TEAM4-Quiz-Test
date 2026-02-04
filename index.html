@@ -44,7 +44,7 @@
             <p>I promise to answer myself without help from anyone</p>
           </div>
 
-          <button type="submit" class="btn-proceed">PROCEED</button>
+          <button type="submit" class="btn-proceed" disabled>PROCEED</button>
         </div>
       </section>
 
@@ -54,46 +54,16 @@
         </div>
 
         <div id="container">
-          <div id="questions">
-            <p><span>Domanda riga 1</span><span>Domanda riga 2</span></p>
-          </div>
-          <div id="answers">
-            <div class="answer">
-              <input type="radio" name="q1" value="a" />
-              <span class="answerBox">
-                <span class="dot"></span>
-                <span class="text">Risposta A</span>
-              </span>
-            </div>
-
-            <div class="answer">
-              <input type="radio" name="q1" value="a" />
-              <span class="answerBox">
-                <span class="dot"></span>
-                <span class="text">Risposta A</span>
-              </span>
-            </div>
-
-            <div class="answer">
-              <input type="radio" name="q1" value="a" />
-              <span class="answerBox">
-                <span class="dot"></span>
-                <span class="text">Risposta A</span>
-              </span>
-            </div>
-
-            <div class="answer">
-              <input type="radio" name="q1" value="a" />
-              <span class="answerBox">
-                <span class="dot"></span>
-                <span class="text">Risposta A</span>
-              </span>
-            </div>
-          </div>
+          <div id="questions"></div>
+          <div id="answers"></div>
         </div>
         <div id="contatore">
           <p class="question-counter">
-            NUMERO DOMANDA <span class="total-questions"> x </span>
+            QUESTION <span id="currentQuestion"></span>
+            <span class="total-questions">
+              /
+              <span id="totalQuestions"></span>
+            </span>
           </p>
         </div>
       </section>
