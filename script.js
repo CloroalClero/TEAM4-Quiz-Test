@@ -285,7 +285,9 @@ function checkUserSelection(userAnswer) {
   }
 
   // Carica domanda successiva
-  loadNextQuestion()
+  setTimeout(() => {
+    loadNextQuestion()
+  }, 500)
 }
 
 /**
