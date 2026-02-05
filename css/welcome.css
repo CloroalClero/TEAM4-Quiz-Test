@@ -355,6 +355,15 @@ body.quiz-active header {
   );
 }
 
+.answer:active .answerBox,
+.answer input[type="radio"]:active + .answerBox {
+  background: linear-gradient(90deg, #d20094, #900080);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 16px 36px rgba(210, 0, 148, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
 .answer input:checked + .answerBox {
   background: linear-gradient(90deg, #d20094, #900080);
   border-color: rgba(255, 255, 255, 0.25);
