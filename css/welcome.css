@@ -391,6 +391,12 @@ body.quiz-active header {
 }*/
 
 /*quando il quiz non è attivo non si vede*/
+.welcome-section {
+  display: block;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
 .quiz-container {
   display: none;
 }
