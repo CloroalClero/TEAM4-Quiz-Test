@@ -262,7 +262,7 @@ body.quiz-active header {
 
 #answers {
   width: min(860px, 92vw);
-  margin: 52px auto 0;
+  margin: 80px auto 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 26px 54px;
