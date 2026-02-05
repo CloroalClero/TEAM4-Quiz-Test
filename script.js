@@ -217,13 +217,13 @@ function startTimer() {
     },
   })
 
-  // Stato iniziale del timer, inizia dal 100% (1)
+  // // Stato iniziale del timer, inizia dal 100% (1)
   displayTimer.set(1)
 
   // Logica per decrementare i secondi
   timer = setInterval(() => {
     timerRemaining--
-    displayTimer.animate(timerRemaining / timerDuration)
+    displayTimer.animate((timerRemaining - 1) / timerDuration)
 
     if (timerRemaining === 0) {
       // Stop timer
