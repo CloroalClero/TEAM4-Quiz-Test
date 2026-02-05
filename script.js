@@ -100,7 +100,7 @@ const questions = [
 let score = 0
 let currentQuestionId = 0
 let timer = null
-const timerDuration = 5
+const timerDuration = 60
 let timerRemaining = timerDuration
 
 /**
