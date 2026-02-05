@@ -15,11 +15,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url(../assets/bg.jpg);
+  background-image: url("/assets/bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: "Inter", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 header {
@@ -51,7 +51,6 @@ main {
 .main-title span {
   display: block;
   color: white;
-  font-family: "Outfit", sans-serif;
   font-size: 60px;
   line-height: 0.95;
 }
@@ -65,7 +64,6 @@ main {
 }
 
 h3 {
-  font-family: "Outfit", sans-serif;
   font-weight: normal;
   color: #d20094;
   margin-top: 20px;
@@ -153,24 +151,22 @@ li {
 }
 
 .quiz-container .timer-wrapper {
-  position: fixed;
-  top: 34px;
+  position: absolute;
+  top: 0;
   right: 60px;
-
   z-index: 50;
-
   width: 140px;
   height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(-50%);
 }
 
 .timer-text {
   text-align: center;
   margin: 0 auto;
   display: block;
-  font-family: "Outfit", sans-serif;
   line-height: 1.05;
   color: white;
   font-weight: 400;
@@ -183,7 +179,6 @@ li {
   text-align: center;
   margin: 0 auto;
   display: block;
-  font-family: "Outfit", sans-serif;
   line-height: 1;
   color: white;
   font-weight: 600;
@@ -191,12 +186,12 @@ li {
 }
 
 .quiz-container .timer-circle .progressbar-text {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  width: 100% !important;
-  text-align: center !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
 }
 
 body.quiz-active main {
@@ -235,7 +230,6 @@ body.quiz-active header {
   max-width: 780px;
   margin: 0 auto;
   display: block;
-  font-family: "Outfit", sans-serif;
   font-size: 60px;
   line-height: 1.08;
   color: white;
