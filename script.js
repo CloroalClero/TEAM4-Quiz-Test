@@ -325,6 +325,14 @@ function showResult() {
   document.body.classList.remove("quiz-active")
   document.body.classList.add("result-active")
 
+  let scorePercentage = (score / questions.length) * 100
+  let color =
+    scorePercentage < 30
+      ? "#d41f07"
+      : scorePercentage < 60
+        ? "#c5c807"
+        : "#6ec807"
+
   // Creazione score-bar
   const resultContainer = document.getElementById("resultContainer")
   const resultBar = new ProgressBar.SemiCircle(resultContainer, {
@@ -338,8 +346,8 @@ function showResult() {
       value: "0%",
       alignToBottom: false,
     },
-    from: { color: "#07bcc8" },
-    to: { color: "#6ec807" },
+    from: { color: "#d41f07" },
+    to: { color: color },
     step: (state, resultBar) => {
       resultBar.path.setAttribute("stroke", state.color)
       var value = Math.round(resultBar.value() * 100)
@@ -349,14 +357,14 @@ function showResult() {
   })
 
   // Avvia animazione fino a punteggio
-  resultBar.animate(score / questions.length)
+  resultBar.animate(scorePercentage / 100)
 
   // Animazione coriandoli
   confetti({
     position: { x: window.innerWidth * 0.5, y: 0 },
-    count: 1000,
+    count: scorePercentage < 30 ? 0 : scorePercentage < 60 ? 500 : 1000,
     size: 1,
-    velocity: 300,
+    velocity: 1000,
     fade: true,
   })
 }
