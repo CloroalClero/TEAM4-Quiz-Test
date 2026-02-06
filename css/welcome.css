@@ -191,7 +191,7 @@ li {
   font-weight: 600;
   font-size: 44px;
 }
- /*Testo e countdown del timer centrato*/
+/*Testo e countdown del timer centrato*/
 .quiz-container .timer-circle .progressbar-text {
   position: absolute;
   top: 50%;
@@ -205,7 +205,7 @@ li {
   width: 140px;
   height: 140px;
 }
- /*Quando quiz è attivo*/
+/*Quando quiz è attivo*/
 body.quiz-active main {
   padding: 0;
 }
@@ -278,9 +278,11 @@ body.quiz-active header {
   padding: 18px 30px;
   border-radius: 999px;
 
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.04));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.04)
+  );
   border: 2px solid rgba(255, 255, 255, 0.45);
 
   box-shadow:
@@ -307,13 +309,15 @@ body.quiz-active header {
   transform: translateY(-1px);
   border-color: rgba(255, 255, 255, 0.65);
   filter: brightness(1.06);
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.12),
-      rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.05)
+  );
 }
 
 .answer:active .answerBox,
-.answer input[type="radio"]:active+.answerBox {
+.answer input[type="radio"]:active + .answerBox {
   background: linear-gradient(90deg, #d20094, #900080);
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow:
@@ -321,7 +325,7 @@ body.quiz-active header {
     0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
-.answer input:checked+.answerBox {
+.answer input:checked + .answerBox {
   background: linear-gradient(90deg, #d20094, #900080);
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow:
@@ -351,11 +355,21 @@ body.quiz-active header {
 }
 
 /*Risultato finale del quiz*/
+#resultContainer {
+  font-weight: bold;
+  font-size: 2em;
+}
+
 .result-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.result-section h2 {
+  font-size: 2.5em;
 }
 
 .result-section div {
