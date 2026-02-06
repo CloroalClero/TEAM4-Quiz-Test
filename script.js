@@ -102,6 +102,7 @@ let currentQuestionId = 0
 let timer = null
 const timerDuration = 60
 let timerRemaining = timerDuration
+let alreadySelected = false
 
 /**
  * Controllo Welcome section per iniziare il quiz
@@ -152,6 +153,9 @@ function showQuestion() {
   // Inizializzazione del timer
   clearInterval(timer)
   timerRemaining = timerDuration
+
+  // Inizializza domanda già selezionata (per evitare doppia risposta)
+  alreadySelected = false
 
   // Stampa domanda attuale
   questionContainer.innerHTML = `${currentQuestion.question}`
@@ -280,14 +284,18 @@ function checkUserSelection(userAnswer) {
   // Controllo risposta
   const currentQuestion = questions[currentQuestionId]
 
-  if (userAnswer === currentQuestion.correct_answer) {
+  if (userAnswer === currentQuestion.correct_answer && !alreadySelected) {
     score++
   }
 
   // Carica domanda successiva
-  setTimeout(() => {
-    loadNextQuestion()
-  }, 500)
+  if (!alreadySelected) {
+    setTimeout(() => {
+      loadNextQuestion()
+    }, 500)
+  }
+
+  alreadySelected = true
 }
 
 /**
