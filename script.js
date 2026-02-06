@@ -364,7 +364,7 @@ function showResult() {
     position: { x: window.innerWidth * 0.5, y: 0 },
     count: scorePercentage < 30 ? 0 : scorePercentage < 60 ? 500 : 1000,
     size: 1,
-    velocity: 1000,
+    velocity: scorePercentage < 30 ? 0 : scorePercentage < 60 ? 500 : 1000,
     fade: true,
   })
 }
