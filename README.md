@@ -6,7 +6,7 @@ Web app single-page che simula l’esperienza del “Benchmark Exam” EPICODE: 
 - GitHub Pages: https://michelbranche.github.io/Quiz-EPICODE/  <!-- [Inferenza] sostituisci con il link esatto che vedi in Settings → Pages -->
 
 ## Repository
-- Codice: https://github.com/MichelBranche/Quiz-EPICODE
+- Codice: https://github.com/CloroalClero/TEAM4-Quiz-Test/tree/main
 
 ## Funzionalità principali
 - Single-page flow: Welcome → Quiz → Results
